@@ -1,0 +1,13 @@
+options = weboptions;
+URL = 'https://search1.odesi.ca/#/details?uri=%2Fodesi%2Fcipo-598-E-1993-04.xml';
+str = urlread(URL);
+
+options.RequestMethod = 'get';
+options.ContentType = 'text';
+data = webread(URL,options);
+
+
+URL = 'https://search1.odesi.ca/search?requestURL=((smoking))%26options%3Dodesi-opts2%26format%3Djson';
+URL2 = 'http://search1.odesi.ca/search?requestURL=((smoking))%26options%3Dodesi-opts2%26format%3Djson%26pageLength%3D';
+
+data = webread(URL2);
