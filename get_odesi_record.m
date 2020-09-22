@@ -16,3 +16,12 @@ URL_xml = 'http://search1.odesi.ca/search?requestURL=((*))%26options%3Dodesi-opt
 
 outfilename = websave('scrape-test1.json',URL_json);
 outfilename2 = websave('scrape-test1.xml',URL_xml);
+
+%% Read JSON
+
+file_in = fileread('scrape-test1.json');
+out = jsondecode(file_in);
+
+% title is out.results(1).metadata{27,1}.TI_facet % i.e. the last element
+% date is out.results(1).metadata{26,1}.date % i.e. the next to last element
+
