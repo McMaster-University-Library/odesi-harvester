@@ -1,5 +1,8 @@
-URL = 'https://search1.odesi.ca/#/details?uri=%2Fodesi%2Fcipo-598-E-1993-04.xml';
-str = urlread(URL);
+% URL = 'https://search1.odesi.ca/#/details?uri=%2Fodesi%2Fcipo-598-E-1993-04.xml';
+% str = urlread(URL);
+
+% odesi API documentation - https://spotdocs.scholarsportal.info/display/api/ODESI+API+and+Feeds
+% Nesstar doc http://www.nesstar.com/software/public_api.html
 
 options = weboptions;
 options.Timeout = 60;
@@ -9,7 +12,7 @@ options.Timeout = 60;
 
 
 % URL = 'https://search1.odesi.ca/search?requestURL=((smoking))%26options%3Dodesi-opts2%26format%3Djson';
-URL_json = 'http://search1.odesi.ca/search?requestURL=((*))%26options%3Dodesi-opts2%26format%3Djson%26pageLength%3D750';
+URL_json = 'http://search1.odesi.ca/search?requestURL=((*))%26options%3Dodesi-opts2%26format%3Djson%26pageLength%3D100';
 % URL_xml = 'http://search1.odesi.ca/search?requestURL=((*))%26options%3Dodesi-opts2%26format%3Dxml%26pageLength%3D750';
 
 % data = webread(URL2);
@@ -46,6 +49,8 @@ for i = 1:1:length(tmp.results)
         switch element_name
             case 'TI_facet'
                 out{i,1} = element_value;
+            case 'SE_facet'
+                out{i,7} = element_value;
             case 'abstract'
                 out{i,4} = element_value;
             case 'biblCit'
